@@ -16,8 +16,9 @@
 
 package cn.nekocode.jarfilter
 
+import com.android.build.gradle.AppExtension
 import com.android.build.gradle.BaseExtension
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -39,7 +40,7 @@ class JarFilterPlugin : Plugin<Project> {
         project.extensions.add(CONFIG_KEYWORD, jarFilters)
 
         val android = project.extensions.findByName("android") as BaseExtension?
-        if (android != null && android is BaseAppModuleExtension) {
+        if (android != null && (android is AppExtension || android is LibraryExtension)) {
             // Register transform
             android.registerTransform(JarFilterTransform(project))
 

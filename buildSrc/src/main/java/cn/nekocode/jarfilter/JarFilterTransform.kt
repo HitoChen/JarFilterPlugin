@@ -36,7 +36,8 @@ class JarFilterTransform(private val project: Project) : Transform() {
 
     override fun isIncremental() = true
 
-    override fun getScopes(): MutableSet<in QualifiedContent.Scope> = ImmutableSet.of(QualifiedContent.Scope.EXTERNAL_LIBRARIES)
+    override fun getScopes(): MutableSet<in QualifiedContent.Scope> = ImmutableSet.of(
+            QualifiedContent.Scope.PROJECT)
 
     override fun getSecondaryFiles(): MutableCollection<SecondaryFile> = ImmutableSet.of(SecondaryFile.nonIncremental(project.files(configFile)))
 
