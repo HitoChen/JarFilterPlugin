@@ -48,7 +48,7 @@ class JarFilterPlugin : Plugin<Project> {
             val updateTask = project.tasks.create(
                     UPDATE_CONFIG_TASK_NAME, UpdateConfigTask::class.java)
             project.tasks.getByName("preBuild").dependsOn(updateTask)
-
+            project.tasks.forEach { task -> println("[JarFilter] task = " + task.name) }
         } else {
             throw UnsupportedOperationException(
                     "The JarFilterPlugin can only be used in android application module.")

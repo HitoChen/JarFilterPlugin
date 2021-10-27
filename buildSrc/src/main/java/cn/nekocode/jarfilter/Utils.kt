@@ -84,7 +84,7 @@ object Utils {
                         // Skip this file
                         continue
                     }
-
+                    print("[JarFilter] class: " + entry.name)
                     zos.putNextEntry(entry)
                     zis.copyTo(zos)
                     zos.closeEntry()
